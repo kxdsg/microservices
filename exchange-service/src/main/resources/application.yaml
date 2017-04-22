@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: exchange-service
+server:
+  port: 3333
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true #从注册中心拉取服务信息
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+
+
+##
+inner:
+  service:
+    currency: currency-service

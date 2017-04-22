@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: zuul-gateway
+server:
+  port: 4444
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+
+zuul:
+  routes:
+    exchange-service:
+      path: /exchange-service/**
+      serviceId: exchange-service #Eureka服务名称
+      #url: http://localhost:3333 #http方式服务地址，一般用于本地测试
