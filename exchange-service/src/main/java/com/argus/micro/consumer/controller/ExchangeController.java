@@ -16,19 +16,12 @@ public class ExchangeController {
     private static final Logger log = LoggerFactory.getLogger(ExchangeController.class);
 
     @Autowired
-    RestTemplate restTemplate;
-
-    @Value("${inner.service.currency}")
-    private String serviceName;
+    private ExchangeService exchangeService;
 
 
     @RequestMapping(value = "/exchange", method = RequestMethod.GET)
     public Double exchange(@RequestParam String type, @RequestParam double amount) {
-        //调用提供者服务
-        //获取汇率
-        String url = "http://"+serviceName+"/currency?type=" + type;
-        Double currency = restTemplate.getForEntity(url, Double.class).getBody();
-        Double result = currency * amount;
+        Double result = exchangeService.exchange(type, amount);
         log.info(String.format("exchange result: %s",result));
         return result;
     }

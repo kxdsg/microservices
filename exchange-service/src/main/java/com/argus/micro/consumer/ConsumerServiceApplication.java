@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 @EnableDiscoveryClient //添加发现服务的能力
 @SpringBootApplication
+@EnableCircuitBreaker //开启断路器功能
 public class ConsumerServiceApplication extends SpringBootServletInitializer {
 
 
